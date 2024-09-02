@@ -1,4 +1,4 @@
-const PAYLOAD = {
+const CREATE_THREAD_PAYLOAD = {
     WITH_MISSING_PROPERTY: {
         title: 'Thread title',
         owner: 'user-123'
@@ -20,4 +20,18 @@ const PAYLOAD = {
     }
 }
 
-module.exports = PAYLOAD;
+const NEW_THREAD_PAYLOAD = {
+    WITH_MISSING_PROPERTY: CREATE_THREAD_PAYLOAD.WITH_MISSING_PROPERTY,
+    WITH_INVALID_DATA_TYPE: {
+        id: 1,
+        title: true,
+        owner: 1
+    },
+    WITH_VALID_DATA: {
+        id: 'thread-123',
+        title: 'Thread title',
+        owner: 'user-123'
+    },
+}
+
+module.exports = { CREATE_THREAD_PAYLOAD, NEW_THREAD_PAYLOAD};

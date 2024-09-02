@@ -1,5 +1,5 @@
 const CreateThread = require('../CreateThread');
-const PAYLOAD = require('./payload');
+const { CREATE_THREAD_PAYLOAD: PAYLOAD} = require('./payload');
 
 describe('a CreateThread entities', () => {
   it('should throw error when payload did not contain needed property', () => {
