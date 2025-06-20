@@ -12,10 +12,9 @@ describe('a NewThread entities', () => {
   
     it('should create new thread object correctly', () => {
   
-      const { title, body, owner } = new NewThread(PAYLOAD.WITH_VALID_DATA);
+      const { title, body } = new NewThread(PAYLOAD.WITH_VALID_DATA);
   
       expect(title).toEqual(PAYLOAD.WITH_VALID_DATA.title);
       expect(body).toEqual(PAYLOAD.WITH_VALID_DATA.body);
-      expect(owner).toEqual(PAYLOAD.WITH_VALID_DATA.owner);
     });
   });
