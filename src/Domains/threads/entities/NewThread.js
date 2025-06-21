@@ -8,7 +8,6 @@ class NewThread {
 
     _verifyPayload(payload) {
         const { title, body } = payload;
-        console.log(payload);
 
         if ( !title || !body) {
             throw new Error('NEW_THREAD.NOT_CONTAIN_NEEDED_PROPERTY');
