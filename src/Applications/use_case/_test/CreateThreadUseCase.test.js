@@ -3,7 +3,7 @@ const NewThread = require('../../../Domains/threads/entities/NewThread');
 const ThreadRepository = require('../../../Domains/threads/ThreadRepository');
 const CreateThreadUseCase = require('../CreateThreadUseCase');
 
-describe('CreatedThreadUseCase', () => {
+describe('CreateThreadUseCase', () => {
   it('should orchestrating the create thread action correctly', async () => {
 
     const payload = {
