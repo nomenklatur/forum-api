@@ -27,7 +27,22 @@ const TableHelper = {
             values: [id, title, body, owner, date],
         };
         await pool.query(query);
-    }
+    },
+
+    async createNewComment({
+        id = 'comment-123',
+        content = 'Comment Content',
+        date = new Date().toISOString(),
+        owner = 'user-123',
+        threadId = 'thread-123',
+        isDelete = false,
+    }) {
+        const query = {
+            text: 'INSERT INTO comments VALUES($1, $2, $3, $4, $5, $6)',
+            values: [id, content, date, threadId, owner, isDelete],
+        };
+        await pool.query(query);
+    },
 }
 
 module.exports = TableHelper;
