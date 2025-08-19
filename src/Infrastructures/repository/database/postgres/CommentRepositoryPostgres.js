@@ -44,6 +44,9 @@ class CommentRepositoryPostgres extends CommentRepository {
             values: [commentId],
         };
         const commentOwnerResult = await this._pool.query(getCommentOwnerQuery);
+        if (!commentOwnerResult.rowCount) {
+            throw new NotFoundError('comment tidak ditemukan');
+        }
         if (commentOwnerResult.rows[0].owner !== userId) {
             throw new AuthorizationError('anda tidak punya akses untuk menghapus komentar ini');
         }
