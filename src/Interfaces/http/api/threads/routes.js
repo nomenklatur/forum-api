@@ -6,6 +6,11 @@ const routes = (handler) => ([
         options: {
             auth: 'jwt',
         }
+    },
+    {
+        path: '/threads/{threadId}',
+        method: 'GET',
+        handler: (request, h) => handler.getThreadDetailHandler(request, h),
     }
 ]);
 

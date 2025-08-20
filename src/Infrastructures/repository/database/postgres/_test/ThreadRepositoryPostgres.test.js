@@ -92,6 +92,7 @@ describe('ThreadRepositoryPostgres', () => {
       const date = new Date().toISOString();
 
       await UsersTableTestHelper.addUser({ id: userId, username: 'dicoding' });
+      await UsersTableTestHelper.addUser({ id: "user-456", username: 'newuser' });
       await TableHelper.createNewThread({
         id: threadId,
         title: 'Thread Title',
@@ -99,6 +100,21 @@ describe('ThreadRepositoryPostgres', () => {
         date,
         owner: userId,
       });
+      await TableHelper.createNewComment({
+        id: 'comment-123',
+        content: 'This is a comment',
+        date,
+        thread: threadId,
+        owner: userId,
+      });
+      await TableHelper.createNewComment({
+        id: 'comment-456',
+        content: 'This is a comment',
+        date,
+        thread: threadId,
+        owner: "user-456",
+      });
+
 
       const threadRepositoryPostgres = new ThreadRepositoryPostgres(pool, {});
 
