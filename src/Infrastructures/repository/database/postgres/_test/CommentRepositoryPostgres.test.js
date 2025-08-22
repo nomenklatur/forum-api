@@ -86,6 +86,12 @@ describe('CommentRepositoryPostgres', () => {
             .rejects.toThrowError(AuthorizationError);
     });
 
+    it('should throw NotFoundError when comment not found', async () => {
+        const commentRepositoryPostgres = new CommentRepositoryPostgres(pool, {});
+        await expect(commentRepositoryPostgres.remove('comment-999', 'user-123'))
+            .rejects.toThrowError(NotFoundError);
+    });
+
     it('should mark comment as deleted when user is the owner', async () => {
         const commentRepositoryPostgres = new CommentRepositoryPostgres(pool, {});
         await expect(commentRepositoryPostgres.remove("comment-123", "user-123"))
