@@ -4,7 +4,6 @@ const ThreadRepository = require('../../../Domains/threads/ThreadRepository');
 
 describe('DeleteCommentUseCase', () => {
   it('should orchestrating the delete comment action correctly', async () => {
-
     const mockThreadRepository = new ThreadRepository();
     const mockCommentRepository = new CommentRepository();
 

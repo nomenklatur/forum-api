@@ -19,10 +19,6 @@ class CreatedComment {
         if (typeof id !== 'string' || typeof content !== 'string' || typeof owner !== 'string') {
             throw new Error('CREATED_COMMENT.NOT_MEET_DATA_TYPE_SPECIFICATION');
         }
-
-        if (content.length > 1000) {
-            throw new Error('CREATED_COMMENT.CHARACTERS_LIMIT_EXCEEDED');
-        }
     }
 }
 
