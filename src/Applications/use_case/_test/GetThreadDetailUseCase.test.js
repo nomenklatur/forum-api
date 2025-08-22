@@ -7,7 +7,7 @@ describe("GetThreadDetailUseCase", () => {
             {
                 id: 'comment-123',
                 content: 'This is a comment',
-                date: new Date().toISOString(),
+                date: "2025-08-22T02:15:21.048Z",
                 username: 'dicoding',
             }
         ];
@@ -16,7 +16,7 @@ describe("GetThreadDetailUseCase", () => {
             id: 'thread-123',
             title: 'Thread Title',
             body: 'Thread Body',
-            date: new Date().toISOString(),
+            date: "2025-08-22T02:15:21.048Z",
             username: 'dicoding',
             comments,
         }
@@ -24,7 +24,20 @@ describe("GetThreadDetailUseCase", () => {
         const mockThreadRepository = new ThreadRepository();
 
         mockThreadRepository.isAvailable = jest.fn(() => Promise.resolve());
-        mockThreadRepository.getDetail = jest.fn(() => Promise.resolve(threadDetail));
+        mockThreadRepository.getDetail = jest.fn(() => Promise.resolve([
+            {
+                thread_id: 'thread-123',
+                title: 'Thread Title',
+                body: 'Thread Body',
+                date: "2025-08-22T02:15:21.048Z",
+                thread_owner: 'dicoding',
+                comment_id: 'comment-123',
+                is_delete: false,
+                comment_owner: 'dicoding',
+                comment_date: "2025-08-22T02:15:21.048Z",
+                content: 'This is a comment'
+            }
+        ]));
 
         /** creating use case instance */
         const getThreadDetailUseCase = new GetThreadDetailUseCase({

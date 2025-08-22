@@ -64,19 +64,7 @@ class ThreadRepositoryPostgres extends ThreadRepository {
       throw new NotFoundError('thread tidak ditemukan');
     }
 
-    return {
-      id: result.rows[0].thread_id,
-      title: result.rows[0].title,
-      body: result.rows[0].body,
-      date: result.rows[0].date,
-      username: result.rows[0].thread_owner, // Changed from 'owner' to 'thread_owner'
-      comments: result.rows.map(row => ({
-        id: row.comment_id,
-        content: row.is_delete ? '**komentar telah dihapus**' : row.content,
-        date: row.comment_date,
-        username: row.comment_owner, // Changed from 'owner' to 'comment_owner'
-      })).filter(comment => comment.id), // Filter out comments that do not exist
-    }
+    return result.rows;
   }
 
 }
