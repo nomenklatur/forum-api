@@ -39,7 +39,7 @@ describe('CreateCommentUseCase', () => {
       content: payload.content,
       owner: 'user-123',
     }));
-
+    expect(mockThreadRepository.isAvailable).toBeCalledWith('thread-123');
     expect(mockCommentRepository.create).toBeCalledWith('user-123', 'thread-123', new NewComment({
       content: payload.content,
     }));

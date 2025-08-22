@@ -122,8 +122,14 @@ describe('ThreadRepositoryPostgres', () => {
       const thread = await threadRepositoryPostgres.getDetail(threadId);
 
       // Assert
+      expect(thread).toHaveLength(2);
       expect(thread[0].thread_id).toStrictEqual(threadId);
       expect(thread[0].title).toStrictEqual('Thread Title');
+      expect(thread[0].comment_id).toStrictEqual('comment-123');
+      expect(thread[0].comment_owner).toStrictEqual('dicoding');
+      expect(thread[0].comment_date).toBeTruthy();
+      expect(thread[0].content).toStrictEqual('This is a comment');
+      expect(thread[0].is_delete).toBeFalsy();
       expect(thread[0].body).toStrictEqual('Thread Body');
       expect(thread[0].date).toBeTruthy();
       expect(thread[0].thread_owner).toStrictEqual('dicoding');
