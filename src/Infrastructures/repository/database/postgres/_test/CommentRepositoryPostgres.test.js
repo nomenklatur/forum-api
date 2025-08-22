@@ -96,6 +96,9 @@ describe('CommentRepositoryPostgres', () => {
         const commentRepositoryPostgres = new CommentRepositoryPostgres(pool, {});
         await expect(commentRepositoryPostgres.remove("comment-123", "user-123"))
             .resolves.not.toThrowError(AuthorizationError);
+
+        const comments = await TableHelper.findById('comment-123', 'comments');
+        expect(comments[0].is_delete).toBeTruthy();
     });
   });
 });
