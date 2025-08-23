@@ -123,15 +123,43 @@ describe('ThreadRepositoryPostgres', () => {
 
       // Assert
       expect(thread).toHaveLength(2);
+      expect(thread).toStrictEqual(
+        [
+        {
+          thread_id: 'thread-123',
+          title: 'Thread Title',
+          body: 'Thread Body',
+          date: new Date(date),
+          thread_owner: 'dicoding',
+          comment_id: 'comment-123',
+          is_delete: false,
+          comment_owner: 'dicoding',
+          comment_date: new Date(date),
+          content: 'This is a comment'
+        },
+        {
+          thread_id: 'thread-123',
+          title: 'Thread Title',
+          body: 'Thread Body',
+          date: new Date(date),
+          thread_owner: 'dicoding',
+          comment_id: 'comment-456',
+          is_delete: false,
+          comment_owner: 'newuser',
+          comment_date: new Date(date),
+          content: 'This is a comment'
+        }
+      ]
+      )
       expect(thread[0].thread_id).toStrictEqual(threadId);
       expect(thread[0].title).toStrictEqual('Thread Title');
       expect(thread[0].comment_id).toStrictEqual('comment-123');
       expect(thread[0].comment_owner).toStrictEqual('dicoding');
-      expect(thread[0].comment_date).toBeTruthy();
+      expect(thread[0].comment_date).toStrictEqual(new Date(date));
       expect(thread[0].content).toStrictEqual('This is a comment');
       expect(thread[0].is_delete).toBeFalsy();
       expect(thread[0].body).toStrictEqual('Thread Body');
-      expect(thread[0].date).toBeTruthy();
+      expect(thread[0].date).toStrictEqual(new Date(date));
       expect(thread[0].thread_owner).toStrictEqual('dicoding');
     });
   });

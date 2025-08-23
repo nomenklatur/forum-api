@@ -42,12 +42,12 @@ class ThreadRepositoryPostgres extends ThreadRepository {
           t.id as thread_id, 
           t.title, 
           t.body, 
-          t.date::text, 
+          t.date AT TIME ZONE \'UTC\' as date, 
           tu.username AS thread_owner,
           c.id as comment_id, 
           c.is_delete,
           cu.username AS comment_owner,
-          c.date as comment_date, 
+          c.date AT TIME ZONE \'UTC\' as comment_date, 
           c.content
         FROM threads t
         INNER JOIN users tu ON t.owner = tu.id
