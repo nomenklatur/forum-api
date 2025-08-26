@@ -138,7 +138,7 @@ describe('ThreadRepositoryPostgres', () => {
           content: 'This is a comment'
         },
         {
-          thread_id: 'thread-123',
+          thread_id: 'thread-1234',
           title: 'Thread Title',
           body: 'Thread Body',
           date: new Date(date),
