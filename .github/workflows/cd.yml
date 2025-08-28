@@ -19,6 +19,9 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: |
+          source ~/.bashrc
+          eval $(ssh-agent)
+          ssh-add ~/.ssh/forum-api
           cd /var/www/forum-api
           git pull origin master
           npm install
