@@ -20,6 +20,8 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           source ~/.profile || source ~/.bashrc
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           eval $(ssh-agent)
           ssh-add ~/.ssh/forum-api
           cd /var/www/forum-api
